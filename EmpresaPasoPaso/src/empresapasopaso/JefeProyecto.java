@@ -22,6 +22,10 @@ public class JefeProyecto extends Trabajador {
         this.personas= personas;
     }
     
+    public JefeProyecto(int personas, String NIF, String nombre, String departamento, Fecha fecha, double sueldoBase) {
+        super(nombre, NIF, departamento, fecha, sueldoBase);
+        this.personas= personas;
+    }
     @Override
     public double calcularSalario() {
         return sueldoBase*(1+personas*0.05);

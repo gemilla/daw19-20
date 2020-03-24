@@ -16,11 +16,14 @@ public class Tester {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-    Empresa empresa= new Empresa();
-    empresa.listarTrabajadores();
-    empresa.insertarEmpresa(Empresa.crearTrabajador());
-    empresa.listarTrabajadores();
-    empresa.consultaPorDepartamento("dpto");
+        Empresa empresa = new Empresa();
+        empresa.listarTrabajadores();
+        Trabajador trabajador = Empresa.crearTrabajador();
+        if (trabajador != null) {
+            empresa.insertarEmpresa(trabajador);
+        }
+        empresa.listarTrabajadores();
+        empresa.consultaPorDepartamento("dpto");
     }
-    
+
 }

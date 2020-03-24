@@ -36,7 +36,11 @@ public abstract class Trabajador {
         this.NIF = Trabajador.contNIF+String.valueOf((char)((int)(Math.random()*26)+65));
         
     }
-
+    public Trabajador(String nombre,String NIF, String departamento, Fecha fecha, double sueldoBase) {
+        this(nombre,departamento, fecha, sueldoBase);
+        this.NIF=NIF;
+    }
+    
     public String getNombre() {
         return nombre;
     }

@@ -5,6 +5,10 @@
  */
 package empresapasopaso;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
 /**
  *
  * @author GEMA
@@ -53,6 +57,53 @@ public class Empresa {
 
     public static Trabajador crearTrabajador() {
         Trabajador trabajador = null;
+        Scanner sc = new Scanner(System.in);
+            System.out.println("¿PROGRAMADOR O JEFE DE PROYECTO?");
+            String op = sc.nextLine().toUpperCase();
+            if (op.equals("PROGRAMADOR") || op.equals("JEFE DE PROYECTO")) {
+                System.out.print("NOMBRE: ");
+                String nombre = sc.nextLine().toUpperCase();
+                System.out.print("NIF: ");
+                String nif = sc.nextLine().toUpperCase();
+                System.out.print("DEPARTAMENTO: ");
+                String departamento = sc.nextLine().toUpperCase();
+                System.out.println("Introduzca fecha(dia mes año)");
+                int dia= sc.nextInt();
+                int mes= sc.nextInt();
+                int anyo= sc.nextInt();
+                System.out.println("Introduzca sueldo");
+                double sueldo = sc.nextDouble();
+                sc.nextLine();
+                if (op.equals("PROGRAMADOR")) {
+                    String choose;
+                    boolean poo;
+                    do {
+                        System.out.print("¿Tiene concomientos de POO?: ");
+                        choose = sc.nextLine().toUpperCase();
+                        if (!choose.equals("SI") && !choose.equals("NO")) {
+                            System.out.println("ERROR | VUELVE A INTRODUCIR");
+                        }
+                        poo = (choose.equals("SI"));
+                    } while (!choose.equals("SI") && !choose.equals("NO"));
+                    StringBuilder lenguajes = new StringBuilder();
+                    System.out.println("Lenguajes de Programación (MAX. 5) [** para terminar] ");
+                    String lenguaje;
+                    do{
+                        lenguaje= sc.nextLine();
+                        if (!lenguaje.equals("**"))
+                            lenguajes=lenguajes.append(";").append(lenguaje);
+                    }while(!lenguaje.equals("**"));
+                    
+                   trabajador = new Programador(poo,lenguajes, nombre, departamento, new Fecha(dia,mes,anyo),sueldo);
+                } else {
+                    System.out.print("¿Cuantas personas dirige?: ");
+                    int numP = sc.nextInt();
+                    trabajador = new JefeProyecto(numP, nombre, departamento, new Fecha(dia,mes,anyo),sueldo);
+
+                }
+            } else {
+                System.out.println("ERROR | VUELVE A INTRODUCIR");
+            }
         return trabajador;
     }
 
