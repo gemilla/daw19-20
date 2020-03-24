@@ -25,6 +25,8 @@ public class Tester {
         }
         empresa.listarTrabajadores();
         empresa.consultaPorDepartamento("dpto");
+        empresa.actualizarSalario("11N");
+        
         
     }
 

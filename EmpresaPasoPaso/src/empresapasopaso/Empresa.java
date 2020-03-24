@@ -95,11 +95,11 @@ public class Empresa {
                     }
                 } while (!lenguaje.equals("**"));
 
-                trabajador = new Programador(poo, lenguajes, nombre, departamento, new Fecha(dia, mes, anyo), sueldo);
+                trabajador = new Programador(poo,nif, lenguajes, nombre, departamento, new Fecha(dia, mes, anyo), sueldo);
             } else {
                 System.out.print("¿Cuantas personas dirige?: ");
                 int numP = sc.nextInt();
-                trabajador = new JefeProyecto(numP, nombre, departamento, new Fecha(dia, mes, anyo), sueldo);
+                trabajador = new JefeProyecto(numP,nif, nombre, departamento, new Fecha(dia, mes, anyo), sueldo);
 
             }
         } else {

@@ -25,6 +25,12 @@ public class Programador extends Trabajador{
         this.lenguajes = lenguajes;
     }
     
+    public Programador(boolean experienciaPOO, String NIF, StringBuilder lenguajes, String nombre, String departamento, Fecha fecha, double sueldoBase) {
+        super(nombre, NIF,departamento, fecha, sueldoBase);
+        this.experienciaPOO = experienciaPOO;
+        this.lenguajes = lenguajes;
+    }
+    
     public String mostrarExperiencia(){
         return (experienciaPOO == true) ? "SI" : "NO";
     }
