@@ -16,6 +16,7 @@ public class Tester {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        //Faltaría hacer el menú
         Empresa empresa = new Empresa();
         empresa.listarTrabajadores();
         Trabajador trabajador = Empresa.crearTrabajador();
@@ -24,6 +25,7 @@ public class Tester {
         }
         empresa.listarTrabajadores();
         empresa.consultaPorDepartamento("dpto");
+        
     }
 
 }

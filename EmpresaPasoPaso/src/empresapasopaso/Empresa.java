@@ -22,9 +22,9 @@ public class Empresa {
         for (int i = 0; i < trabajadores.length; i++) {
             StringBuilder sb = new StringBuilder("JAVA;PHYTON");
             if (i < 5) {
-                trabajadores[i] = new Programador(true, sb, "TESTER", "IT", new Fecha(),Math.random()*500+1000);
+                trabajadores[i] = new Programador(true, sb, "TESTER", "IT", new Fecha(), Math.random() * 500 + 1000);
             } else {
-                trabajadores[i] = new JefeProyecto(i*5,"TESTER_JEFE", "dpto", new Fecha(),Math.random()*500+1500);
+                trabajadores[i] = new JefeProyecto(i * 5, "TESTER_JEFE", "dpto", new Fecha(), Math.random() * 500 + 1500);
             }
         }
     }
@@ -42,9 +42,9 @@ public class Empresa {
     }
 
     /*
-2 Añadir trabajador. Permitir añadir tanto programador como jefe de proyecto. Los datos se cargarán mediante E/S. dentro del método. El método devolverá el trabajador construido que será introducido en la empresa siempre que haya hueco, mediante otro método que recibirá el animal como argumento de entrada. (1p)
-3 Consulta de trabajadores. Listar, a partir del departamento, los trabajadores que haya en la empresa. El dpto. será introducido como argumento de entrada al método. (0,5p)
-4 Actualizar salario de un trabajador a partir de su NIF que será introducido como argumento de entrada al método. (0,75p)
+
+
+
 5 Actualizar las personas que tiene a su cargo un jefe de proyecto identificado por su por nombre y recibido como argumento de entrada. El método devolverá un booleano informando de si se ha realizado la actualización o no. (0,75p)
 6 Eliminar trabajador con determinado nombre y departamento. . El método, dentro de su implementación, preguntará el nombre y el departamento al que pertenece el trabajador a eliminar.(0,75p)
 7 Calcular y mostrar el listado del salario real de los trabajadores de un determinado departamento así como el salario total percibido por todos los integrantes del dtpo. (1p)
@@ -58,52 +58,53 @@ public class Empresa {
     public static Trabajador crearTrabajador() {
         Trabajador trabajador = null;
         Scanner sc = new Scanner(System.in);
-            System.out.println("¿PROGRAMADOR O JEFE DE PROYECTO?");
-            String op = sc.nextLine().toUpperCase();
-            if (op.equals("PROGRAMADOR") || op.equals("JEFE DE PROYECTO")) {
-                System.out.print("NOMBRE: ");
-                String nombre = sc.nextLine().toUpperCase();
-                System.out.print("NIF: ");
-                String nif = sc.nextLine().toUpperCase();
-                System.out.print("DEPARTAMENTO: ");
-                String departamento = sc.nextLine().toUpperCase();
-                System.out.println("Introduzca fecha(dia mes año)");
-                int dia= sc.nextInt();
-                int mes= sc.nextInt();
-                int anyo= sc.nextInt();
-                System.out.println("Introduzca sueldo");
-                double sueldo = sc.nextDouble();
-                sc.nextLine();
-                if (op.equals("PROGRAMADOR")) {
-                    String choose;
-                    boolean poo;
-                    do {
-                        System.out.print("¿Tiene concomientos de POO?: ");
-                        choose = sc.nextLine().toUpperCase();
-                        if (!choose.equals("SI") && !choose.equals("NO")) {
-                            System.out.println("ERROR | VUELVE A INTRODUCIR");
-                        }
-                        poo = (choose.equals("SI"));
-                    } while (!choose.equals("SI") && !choose.equals("NO"));
-                    StringBuilder lenguajes = new StringBuilder();
-                    System.out.println("Lenguajes de Programación (MAX. 5) [** para terminar] ");
-                    String lenguaje;
-                    do{
-                        lenguaje= sc.nextLine();
-                        if (!lenguaje.equals("**"))
-                            lenguajes=lenguajes.append(";").append(lenguaje);
-                    }while(!lenguaje.equals("**"));
-                    
-                   trabajador = new Programador(poo,lenguajes, nombre, departamento, new Fecha(dia,mes,anyo),sueldo);
-                } else {
-                    System.out.print("¿Cuantas personas dirige?: ");
-                    int numP = sc.nextInt();
-                    trabajador = new JefeProyecto(numP, nombre, departamento, new Fecha(dia,mes,anyo),sueldo);
+        System.out.println("¿PROGRAMADOR O JEFE DE PROYECTO?");
+        String op = sc.nextLine().toUpperCase();
+        if (op.equals("PROGRAMADOR") || op.equals("JEFE DE PROYECTO")) {
+            System.out.print("NOMBRE: ");
+            String nombre = sc.nextLine().toUpperCase();
+            System.out.print("NIF: ");
+            String nif = sc.nextLine().toUpperCase();
+            System.out.print("DEPARTAMENTO: ");
+            String departamento = sc.nextLine().toUpperCase();
+            System.out.println("Introduzca fecha(dia mes año)");
+            int dia = sc.nextInt();
+            int mes = sc.nextInt();
+            int anyo = sc.nextInt();
+            System.out.println("Introduzca sueldo");
+            double sueldo = sc.nextDouble();
+            sc.nextLine();
+            if (op.equals("PROGRAMADOR")) {
+                String choose;
+                boolean poo;
+                do {
+                    System.out.print("¿Tiene concomientos de POO?: ");
+                    choose = sc.nextLine().toUpperCase();
+                    if (!choose.equals("SI") && !choose.equals("NO")) {
+                        System.out.println("ERROR | VUELVE A INTRODUCIR");
+                    }
+                    poo = (choose.equals("SI"));
+                } while (!choose.equals("SI") && !choose.equals("NO"));
+                StringBuilder lenguajes = new StringBuilder();
+                System.out.println("Lenguajes de Programación (MAX. 5) [** para terminar] ");
+                String lenguaje;
+                do {
+                    lenguaje = sc.nextLine();
+                    if (!lenguaje.equals("**")) {
+                        lenguajes = lenguajes.append(";").append(lenguaje);
+                    }
+                } while (!lenguaje.equals("**"));
 
-                }
+                trabajador = new Programador(poo, lenguajes, nombre, departamento, new Fecha(dia, mes, anyo), sueldo);
             } else {
-                System.out.println("ERROR | VUELVE A INTRODUCIR");
+                System.out.print("¿Cuantas personas dirige?: ");
+                int numP = sc.nextInt();
+                trabajador = new JefeProyecto(numP, nombre, departamento, new Fecha(dia, mes, anyo), sueldo);
+
             }
+        } else {
+            System.out.println("ERROR | VUELVE A INTRODUCIR");
+        }
         return trabajador;
     }
 
@@ -132,6 +133,19 @@ public class Empresa {
         for (int i = 0; i < trabajadores.length; i++) {
             if (trabajadores[i] != null && trabajadores[i].departamento.equalsIgnoreCase(dpto)) {
                 System.out.println(trabajadores[i]);
+            }
+        }
+    }
+
+    //4 Actualizar salario de un trabajador a partir de su NIF que será introducido como argumento de entrada al método. (0,75p)
+    public void actualizarSalario(String NIF) {
+        Scanner lector = new Scanner(System.in);
+
+        for (int i = 0; i < trabajadores.length; i++) {
+            if (trabajadores[i] != null && trabajadores[i].NIF.equalsIgnoreCase(NIF)) {
+                System.out.println(trabajadores[i]);
+                System.out.println("Introduce el salario nuevo");
+                trabajadores[i].setSueldoBase(lector.nextDouble());
             }
         }
     }
