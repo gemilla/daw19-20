@@ -19,7 +19,7 @@ public class Empresa {
 
     public Empresa() {
         trabajadores = new Trabajador[10];
-        for (int i = 0; i < trabajadores.length; i++) {
+        for (int i = 2; i < trabajadores.length; i++) {
             StringBuilder sb = new StringBuilder("JAVA;PHYTON");
             if (i < 5) {
                 trabajadores[i] = new Programador(true, sb, "TESTER", "IT", new Fecha(), Math.random() * 500 + 1000);
@@ -111,7 +111,7 @@ public class Empresa {
     public void insertarEmpresa(Trabajador trabajador) {
         boolean introducido = false;
         for (int i = 0; i < trabajadores.length && introducido == false; i++) {
-            if (trabajadores[i] != null) {
+            if (trabajadores[i] == null) {
                 trabajadores[i] = trabajador;
                 introducido = true;
             }

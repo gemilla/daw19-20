@@ -15,6 +15,7 @@ public class JefeProyecto extends Trabajador {
     public JefeProyecto() {
         super();
         this.personas= 5;
+        sueldoBase= Math.random()*501+1500;
     }
 
     public JefeProyecto(int personas, String nombre, String departamento, Fecha fecha, double sueldoBase) {
@@ -26,9 +27,17 @@ public class JefeProyecto extends Trabajador {
         super(nombre, NIF, departamento, fecha, sueldoBase);
         this.personas= personas;
     }
+    
+    public int getPersonas() {
+        return personas;
+    }
+
+    public void setPersonas(int personas) {
+        this.personas = personas;
+    }
     @Override
     public double calcularSalario() {
-        return sueldoBase*(1+personas*0.05);
+        return sueldoBase*(1+personas*0.01);
     }
 
     @Override

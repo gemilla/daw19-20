@@ -15,8 +15,9 @@ public class Programador extends Trabajador{
 
     public Programador() {
         super();
-        this.experienciaPOO = true;
-        this.lenguajes = new StringBuilder("Java;C##");
+        experienciaPOO = true;
+        lenguajes = new StringBuilder("Java;C##");
+        sueldoBase= Math.random()*501+1000;
     }
 
     public Programador(boolean experienciaPOO, StringBuilder lenguajes, String nombre, String departamento, Fecha fecha, double sueldoBase) {
@@ -32,15 +33,27 @@ public class Programador extends Trabajador{
     }
     
     public String mostrarExperiencia(){
-        return (experienciaPOO == true) ? "SI" : "NO";
+        //return (experienciaPOO) ? "SI" : "NO";
+        String cadena="NO";
+        if (experienciaPOO)
+            cadena="SI";
+        return cadena;
     }
     
     @Override
     public double calcularSalario() {
-        return (experienciaPOO == true) ? sueldoBase + (sueldoBase * 0.20) : sueldoBase;
+        //return (experienciaPOO == true) ? sueldoBase + (sueldoBase * 0.20) : sueldoBase;
+        double salario = sueldoBase;
+        if (experienciaPOO == true)
+            salario+=sueldoBase * 0.20;
+        return salario;
     }
+   
     @Override
     public String toString() {
         return super.toString()+"Experiencia en POO:"+ mostrarExperiencia()+ lenguajes.toString();
     }
+
+    
+    
 }

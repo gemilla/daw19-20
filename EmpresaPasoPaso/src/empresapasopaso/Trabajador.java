@@ -10,6 +10,7 @@ package empresapasopaso;
  * @author GEMA
  */
 public abstract class Trabajador {
+
     protected String nombre;
     protected String NIF;
     protected static int contNIF;
@@ -19,9 +20,14 @@ public abstract class Trabajador {
 
     public Trabajador() {
         Trabajador.contNIF++;
-        this.NIF = Trabajador.contNIF+String.valueOf((char)((int)(Math.random()*26)+65));
-        //this.NIF = Trabajador.contNIF+"t";
-        this.nombre = "Trabajador";
+        NIF = Trabajador.contNIF + String.valueOf((char) ((int) (Math.random() * 26) + 65));
+        /*otra forma1
+        this.NIF= String.valueOf(Trabajador.contNIF);*/
+ /*otra forma2
+        String nif = String.format("%08d",Trabajador.contNIF);
+        NIF = Trabajador.contNIF+String.valueOf((char)((int)(Math.random()*26)+65));*/
+
+        this.nombre = "Trabajador"+NIF;
         this.departamento = "dpto";
         this.fecha = new Fecha();
         //el salario para los hijos pues son diferentes random
@@ -33,14 +39,15 @@ public abstract class Trabajador {
         this.fecha = fecha;
         this.sueldoBase = sueldoBase;
         Trabajador.contNIF++;
-        this.NIF = Trabajador.contNIF+String.valueOf((char)((int)(Math.random()*26)+65));
-        
+        this.NIF = Trabajador.contNIF + String.valueOf((char) ((int) (Math.random() * 26) + 65));
+
     }
-    public Trabajador(String nombre,String NIF, String departamento, Fecha fecha, double sueldoBase) {
-        this(nombre,departamento, fecha, sueldoBase);
-        this.NIF=NIF;
+
+    public Trabajador(String nombre, String NIF, String departamento, Fecha fecha, double sueldoBase) {
+        this(nombre, departamento, fecha, sueldoBase);
+        this.NIF = NIF;
     }
-    
+
     public String getNombre() {
         return nombre;
     }
@@ -90,9 +97,10 @@ public abstract class Trabajador {
     }
 
     public abstract double calcularSalario();
+
     @Override
     public String toString() {
-        return "Trabajador{" + "nombre=" + nombre + ", NIF=" + NIF + ", departamento=" + departamento + ", fecha=" + fecha + ", sueldoBase=" + sueldoBase + '}';
+        return getClass().getSimpleName()+"{" + "nombre=" + nombre + ", NIF=" + NIF + ", departamento=" + departamento + ", fecha=" + fecha.convertidorFormato() + ", sueldoBase=" + sueldoBase + '}';
     }
-    
+
 }

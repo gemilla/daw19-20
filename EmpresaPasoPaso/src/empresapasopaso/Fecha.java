@@ -15,9 +15,9 @@ public class Fecha {
     protected int anyo;
     
     public Fecha() { 
-        this.dia = (int) ((Math.random() * 30) + 1);
-        this.mes = (int) ((Math.random() * 12) + 1);
-        this.anyo = (int) ((Math.random() * 100) + 1950);
+        dia = (int) ((Math.random() * 30) + 1);
+        mes = (int) ((Math.random() * 12) + 1);
+        anyo = (int) ((Math.random() * 100) + 1950);
     }
     
     public Fecha(int dia, int mes, int anyo) {
@@ -52,9 +52,15 @@ public class Fecha {
 
     @Override
     public String toString() {
-        return "Fecha{" + "dia=" + dia + ", mes=" + mes + ", anyo=" + anyo + '}';
+        //return "Fecha{" + "dia=" + dia + ", mes=" + mes + ", anyo=" + anyo + '}';
+        return convertidorFormato();
     }
+
+    
     public String convertidorFormato(){
-        return String.format("%02d/%02d/%02d", dia,mes,anyo );
+        return String.format("%02d/%02d/%04d", dia,mes,anyo );
+    }
+    public void mostrarFecha(){
+        System.out.printf("%02d/%02d/%04d",dia,mes,anyo );
     }
 }

@@ -17,6 +17,13 @@ public class Tester {
     public static void main(String[] args) {
         // TODO code application logic here
         //Faltaría hacer el menú
+          
+        
+        
+        
+        
+        
+        
         Empresa empresa = new Empresa();
         empresa.listarTrabajadores();
         Trabajador trabajador = Empresa.crearTrabajador();
@@ -24,8 +31,12 @@ public class Tester {
             empresa.insertarEmpresa(trabajador);
         }
         empresa.listarTrabajadores();
+        System.out.println("-------------------------------------");
         empresa.consultaPorDepartamento("dpto");
         empresa.actualizarSalario("11N");
+        empresa.listarTrabajadores();
+        System.out.println("-------------------------------------");
+        
         
         
     }
