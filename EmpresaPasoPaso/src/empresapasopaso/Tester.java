@@ -5,6 +5,8 @@
  */
 package empresapasopaso;
 
+import java.util.Scanner;
+
 /**
  *
  * @author GEMA
@@ -17,28 +19,28 @@ public class Tester {
     public static void main(String[] args) {
         // TODO code application logic here
         //Faltaría hacer el menú
-          
+        /*StringBuilder asdf=new StringBuilder("Java");   
+       asdf.append(";C##");
+       System.out.println(asdf);
+       String trozos[]= asdf.toString().split(";");
+        System.out.println(trozos.length);
         
-        
-        
-        
-        
-        
-        Empresa empresa = new Empresa();
+         */
+        Scanner lector= new Scanner(System.in);
+        Empresa empresa = new Empresa(20);
         empresa.listarTrabajadores();
-        Trabajador trabajador = Empresa.crearTrabajador();
+        /*Trabajador trabajador = Empresa.crearTrabajador();
         if (trabajador != null) {
             empresa.insertarEmpresa(trabajador);
         }
-        empresa.listarTrabajadores();
+        empresa.listarTrabajadores();*/
         System.out.println("-------------------------------------");
         empresa.consultaPorDepartamento("dpto");
-        empresa.actualizarSalario("11N");
+        System.out.println("Dime NIF");
+        empresa.actualizarSalario(lector.nextLine());
         empresa.listarTrabajadores();
         System.out.println("-------------------------------------");
-        
-        
-        
+          
     }
 
 }

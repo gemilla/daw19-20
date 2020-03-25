@@ -7,6 +7,7 @@ package empresapasopaso;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -18,13 +19,28 @@ public class Empresa {
     protected Trabajador[] trabajadores;
 
     public Empresa() {
-        trabajadores = new Trabajador[10];
+        //this(12);
+        trabajadores = new Trabajador[12];
         for (int i = 2; i < trabajadores.length; i++) {
-            StringBuilder sb = new StringBuilder("JAVA;PHYTON");
-            if (i < 5) {
-                trabajadores[i] = new Programador(true, sb, "TESTER", "IT", new Fecha(), Math.random() * 500 + 1000);
+
+            if (i < trabajadores.length / 2 + 2) {
+                trabajadores[i] = new Programador();
             } else {
-                trabajadores[i] = new JefeProyecto(i * 5, "TESTER_JEFE", "dpto", new Fecha(), Math.random() * 500 + 1500);
+                trabajadores[i] = new JefeProyecto();
+            }
+        }
+
+    }
+
+    public Empresa(int tamanyo) {
+        trabajadores = new Trabajador[tamanyo];
+        for (int i = 2; i < trabajadores.length; i++) {
+
+            if (i < trabajadores.length / 2 + 2) {
+                StringBuilder sb = new StringBuilder("JAVA;PHYTON");
+                trabajadores[i] = new Programador(true, sb, "TESTER", "IT", new Fecha(), Math.random() * 501 + 1000);
+            } else {
+                trabajadores[i] = new JefeProyecto(i * 5, "TESTER_JEFE", "dpto", new Fecha(), Math.random() * 501 + 1500);
             }
         }
     }
@@ -42,17 +58,24 @@ public class Empresa {
     }
 
     /*
+    
 
 
 
-5 Actualizar las personas que tiene a su cargo un jefe de proyecto identificado por su por nombre y recibido como argumento de entrada. El método devolverá un booleano informando de si se ha realizado la actualización o no. (0,75p)
-6 Eliminar trabajador con determinado nombre y departamento. . El método, dentro de su implementación, preguntará el nombre y el departamento al que pertenece el trabajador a eliminar.(0,75p)
-7 Calcular y mostrar el listado del salario real de los trabajadores de un determinado departamento así como el salario total percibido por todos los integrantes del dtpo. (1p)
-8 Mostrar los empleados de la empresa ordenados por salario base (1p)*/
+5	Actualizar las personas que tiene a su cargo un jefe de proyecto identificado por su por nombre y recibido como argumento de entrada. El método devolverá un booleano informando de si se ha realizado la actualización o no. (0,75p)
+6	Eliminar trabajador con determinado nombre y departamento. . El método, dentro de su implementación, preguntará el nombre y el departamento al que pertenece el trabajador a eliminar.(0,75p)
+7	Calcular y mostrar el listado del salario real de los trabajadores de un determinado departamento así como el salario total percibido por todos los integrantes del dtpo. (1p)
+8	Mostrar los empleados de la empresa ordenados por salario base (1p)
+
+     */
     public void listarTrabajadores() {
         for (int i = 0; i < trabajadores.length; i++) {
-            System.out.println(trabajadores[i]);
+            if (trabajadores[i] != null) {
+                System.out.println(trabajadores[i]);
+            }
+            // System.out.println(Arrays.toString(trabajadores));
         }
+
     }
 
     public static Trabajador crearTrabajador() {
@@ -86,7 +109,7 @@ public class Empresa {
                     poo = (choose.equals("SI"));
                 } while (!choose.equals("SI") && !choose.equals("NO"));
                 StringBuilder lenguajes = new StringBuilder();
-                System.out.println("Lenguajes de Programación (MAX. 5) [** para terminar] ");
+                System.out.println("Lenguajes de Programación [** para terminar] ");
                 String lenguaje;
                 do {
                     lenguaje = sc.nextLine();
@@ -95,11 +118,11 @@ public class Empresa {
                     }
                 } while (!lenguaje.equals("**"));
 
-                trabajador = new Programador(poo,nif, lenguajes, nombre, departamento, new Fecha(dia, mes, anyo), sueldo);
+                trabajador = new Programador(poo, nif, lenguajes, nombre, departamento, new Fecha(dia, mes, anyo), sueldo);
             } else {
                 System.out.print("¿Cuantas personas dirige?: ");
                 int numP = sc.nextInt();
-                trabajador = new JefeProyecto(numP,nif, nombre, departamento, new Fecha(dia, mes, anyo), sueldo);
+                trabajador = new JefeProyecto(numP, nif, nombre, departamento, new Fecha(dia, mes, anyo), sueldo);
 
             }
         } else {
@@ -115,19 +138,16 @@ public class Empresa {
                 trabajadores[i] = trabajador;
                 introducido = true;
             }
-            if (introducido) {
-                System.out.println("El trabajador ha sido contratado por la empresa");
-            } else {
-                System.out.println("No hay sitio");
-            }
-
         }
+        if (introducido) {
+            System.out.println("El trabajador ha sido contratado por la empresa");
+        } else {
+            System.out.println("No hay sitio");
+        }
+
     }
 
-    @Override
-    public String toString() {
-        return "Empresa{" + "trabajadores=" + trabajadores + '}';
-    }
+
 
     public void consultaPorDepartamento(String dpto) {
         for (int i = 0; i < trabajadores.length; i++) {
@@ -145,9 +165,14 @@ public class Empresa {
             if (trabajadores[i] != null && trabajadores[i].NIF.equalsIgnoreCase(NIF)) {
                 System.out.println(trabajadores[i]);
                 System.out.println("Introduce el salario nuevo");
-                trabajadores[i].setSueldoBase(lector.nextDouble());
+                //trabajadores[i].setSueldoBase(lector.nextDouble());
+                trabajadores[i].sueldoBase=lector.nextDouble();
             }
         }
+    }
+@Override
+        public String toString() {
+        return "Empresa{" + "trabajadores=" + trabajadores + '}';
     }
 
 }
