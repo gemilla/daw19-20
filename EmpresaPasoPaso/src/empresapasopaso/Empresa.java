@@ -62,9 +62,8 @@ public class Empresa {
 
 
 
-5	Actualizar las personas que tiene a su cargo un jefe de proyecto identificado por su por nombre y recibido como argumento de entrada. El método devolverá un booleano informando de si se ha realizado la actualización o no. (0,75p)
-6	Eliminar trabajador con determinado nombre y departamento. . El método, dentro de su implementación, preguntará el nombre y el departamento al que pertenece el trabajador a eliminar.(0,75p)
-7	Calcular y mostrar el listado del salario real de los trabajadores de un determinado departamento así como el salario total percibido por todos los integrantes del dtpo. (1p)
+
+
 8	Mostrar los empleados de la empresa ordenados por salario base (1p)
 
      */
@@ -147,8 +146,6 @@ public class Empresa {
 
     }
 
-
-
     public void consultaPorDepartamento(String dpto) {
         for (int i = 0; i < trabajadores.length; i++) {
             if (trabajadores[i] != null && trabajadores[i].departamento.equalsIgnoreCase(dpto)) {
@@ -166,12 +163,59 @@ public class Empresa {
                 System.out.println(trabajadores[i]);
                 System.out.println("Introduce el salario nuevo");
                 //trabajadores[i].setSueldoBase(lector.nextDouble());
-                trabajadores[i].sueldoBase=lector.nextDouble();
+                trabajadores[i].sueldoBase = lector.nextDouble();
             }
         }
     }
-@Override
-        public String toString() {
+
+    public boolean actualizarPersonas(String nombre, int personas) {
+        boolean todoOk = false;
+        for (int i = 0; i < trabajadores.length && !todoOk; i++) {
+            /*if (trabajadores[i] != null && trabajadores[i] instanceof JefeProyecto && trabajadores[i].nombre.equalsIgnoreCase(nombre)) {
+                ((JefeProyecto) trabajadores[i]).personas = personas;
+                todoOk = true;
+            }*/
+            if (trabajadores[i] != null && trabajadores[i].getClass().getSimpleName().equals("JefeProyecto") && trabajadores[i].nombre.equalsIgnoreCase(nombre)) {
+                ((JefeProyecto) trabajadores[i]).personas = personas;
+                todoOk = true;
+            }
+        }
+        return todoOk;
+    }
+
+    public void eliminar() {
+        Scanner lector = new Scanner(System.in);
+        String nombre, departamento;
+        boolean eliminado = false;
+        for (int i = 0; i < trabajadores.length && !eliminado; i++) {
+            if (trabajadores[i] != null) {
+                System.out.println("Introduzca el nombre del trabajador y el departamento");
+                nombre = lector.nextLine();
+                departamento = lector.nextLine();
+                if (trabajadores[i].nombre.equalsIgnoreCase(nombre) && trabajadores[i].departamento.equalsIgnoreCase(departamento)) {
+                    trabajadores[i] = null;
+                    eliminado = true;
+                }
+            }
+        }
+        if (eliminado) {
+            System.out.println("El trabajador ha sido eliminado correctamente");
+        }
+    }
+
+    public void calcularSalario(String dpto){
+        double salarioDpto=0;
+        for (int i = 0; i < trabajadores.length; i++) {
+            if (trabajadores[i]!=null&&trabajadores[i].departamento.equals(dpto)){
+                System.out.printf("%s gana %.2f €\n",trabajadores[i].nombre,trabajadores[i].calcularSalario());
+               // salarioDpto+=trabajadores[i].calcularSalario();
+                salarioDpto=salarioDpto+trabajadores[i].calcularSalario();
+            }
+        }
+        System.out.printf("El salario total del dpto es %.2f €",salarioDpto);
+    }
+    @Override
+    public String toString() {
         return "Empresa{" + "trabajadores=" + trabajadores + '}';
     }
 

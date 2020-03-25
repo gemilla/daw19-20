@@ -33,14 +33,19 @@ public class Tester {
         if (trabajador != null) {
             empresa.insertarEmpresa(trabajador);
         }
-        empresa.listarTrabajadores();*/
+        empresa.listarTrabajadores();
         System.out.println("-------------------------------------");
         empresa.consultaPorDepartamento("dpto");
         System.out.println("Dime NIF");
-        empresa.actualizarSalario(lector.nextLine());
+        empresa.actualizarSalario(lector.nextLine());*/
         empresa.listarTrabajadores();
         System.out.println("-------------------------------------");
-          
+        if (empresa.actualizarPersonas("TESTER_JEFE", 30))
+            System.out.println("Cambio actualizado con éxito");
+        else
+            System.out.println("No se ha encontrado dicho trabajador");
+         empresa.listarTrabajadores();
+         empresa.calcularSalario("dpto");
     }
 
 }
