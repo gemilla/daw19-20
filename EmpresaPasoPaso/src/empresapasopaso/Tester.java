@@ -27,9 +27,9 @@ public class Tester {
         
          */
         Scanner lector= new Scanner(System.in);
-        Empresa empresa = new Empresa(20);
-        empresa.listarTrabajadores();
-        /*Trabajador trabajador = Empresa.crearTrabajador();
+        Empresa empresa = new Empresa(5);
+        /*empresa.listarTrabajadores();
+        Trabajador trabajador = Empresa.crearTrabajador();
         if (trabajador != null) {
             empresa.insertarEmpresa(trabajador);
         }
@@ -40,12 +40,15 @@ public class Tester {
         empresa.actualizarSalario(lector.nextLine());*/
         empresa.listarTrabajadores();
         System.out.println("-------------------------------------");
-        if (empresa.actualizarPersonas("TESTER_JEFE", 30))
+       /* if (empresa.actualizarPersonas("TESTER_JEFE", 30))
             System.out.println("Cambio actualizado con éxito");
         else
             System.out.println("No se ha encontrado dicho trabajador");
          empresa.listarTrabajadores();
-         empresa.calcularSalario("dpto");
+         empresa.calcularSalario("dpto");*/
+       empresa.ordenarCopia();
+       System.out.println("-------------------------------------");
+       empresa.listarTrabajadores();
     }
 
 }

@@ -40,7 +40,7 @@ public class Empresa {
                 StringBuilder sb = new StringBuilder("JAVA;PHYTON");
                 trabajadores[i] = new Programador(true, sb, "TESTER", "IT", new Fecha(), Math.random() * 501 + 1000);
             } else {
-                trabajadores[i] = new JefeProyecto(i * 5, "TESTER_JEFE", "dpto", new Fecha(), Math.random() * 501 + 1500);
+                trabajadores[i] = new JefeProyecto(i * 5, "TESTER_JEFE", "dpto", new Fecha(), 10);//Math.random() * 501 + 1500
             }
         }
     }
@@ -57,16 +57,6 @@ public class Empresa {
         this.trabajadores = trabajadores;
     }
 
-    /*
-    
-
-
-
-
-
-8	Mostrar los empleados de la empresa ordenados por salario base (1p)
-
-     */
     public void listarTrabajadores() {
         for (int i = 0; i < trabajadores.length; i++) {
             if (trabajadores[i] != null) {
@@ -203,16 +193,68 @@ public class Empresa {
         }
     }
 
-    public void calcularSalario(String dpto){
-        double salarioDpto=0;
+    public void calcularSalario(String dpto) {
+        double salarioDpto = 0;
         for (int i = 0; i < trabajadores.length; i++) {
-            if (trabajadores[i]!=null&&trabajadores[i].departamento.equals(dpto)){
-                System.out.printf("%s gana %.2f €\n",trabajadores[i].nombre,trabajadores[i].calcularSalario());
-               // salarioDpto+=trabajadores[i].calcularSalario();
-                salarioDpto=salarioDpto+trabajadores[i].calcularSalario();
+            if (trabajadores[i] != null && trabajadores[i].departamento.equals(dpto)) {
+                System.out.printf("%s gana %.2f €\n", trabajadores[i].nombre, trabajadores[i].calcularSalario());
+                // salarioDpto+=trabajadores[i].calcularSalario();
+                salarioDpto = salarioDpto + trabajadores[i].calcularSalario();
             }
         }
-        System.out.printf("El salario total del dpto es %.2f €",salarioDpto);
+        System.out.printf("El salario total del dpto es %.2f €", salarioDpto);
+    }
+
+    public void ordenarOriginal() {
+        Trabajador aux = null;
+        boolean intercambio = true;
+        while (intercambio) {
+            intercambio = false;
+            for (int i = 0; i < trabajadores.length - 1; i++) {
+                if (trabajadores[i]!=null&&trabajadores[i+1]!=null&&trabajadores[i].sueldoBase < trabajadores[i + 1].sueldoBase) {
+                    aux = trabajadores[i];
+                    trabajadores[i] = trabajadores[i + 1];
+                    trabajadores[i + 1] = aux;
+                    intercambio = true;
+                }
+            }
+
+        }
+
+    }
+    public void ordenarCopia() {
+        int cont=0;
+        for (int i = 0; i < trabajadores.length; i++) {
+            if (trabajadores[i]!=null)
+                cont++;
+            
+        }
+        Trabajador[] copia = new Trabajador[cont];
+        Trabajador aux = null;
+        for (int i = 0,j=0; i < trabajadores.length; i++) {
+            if (trabajadores[i]!=null){
+                copia[j]=trabajadores[i];
+                j++;
+            }
+        }
+           
+        boolean intercambio = true;
+        while (intercambio) {
+            intercambio = false;
+            for (int i = 0; i < copia.length - 1; i++) {
+                if (copia[i].sueldoBase < copia[i + 1].sueldoBase) {
+                    aux = copia[i];
+                    copia[i] = copia[i + 1];
+                    copia[i + 1] = aux;
+                    intercambio = true;
+                }
+            }
+
+        }
+        for (int i = 0; i < copia.length; i++) {
+            System.out.println(copia[i]);
+            
+        }
     }
     @Override
     public String toString() {
