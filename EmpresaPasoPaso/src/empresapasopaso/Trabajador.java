@@ -5,12 +5,13 @@
  */
 package empresapasopaso;
 
+import java.io.Serializable;
+
 /**
  *
  * @author GEMA
  */
-public abstract class Trabajador {
-
+public abstract class Trabajador implements Serializable{
     protected String nombre;
     protected String NIF;
     protected static int contNIF;
@@ -102,5 +103,7 @@ public abstract class Trabajador {
     public String toString() {
         return getClass().getSimpleName()+"{" + "nombre=" + nombre + ", NIF=" + NIF + ", departamento=" + departamento + ", fecha=" + fecha.convertidorFormato() + ", sueldoBase=" + sueldoBase + '}';
     }
-
+    public String toStringFichero(){
+        return getClass().getSimpleName()+";" + nombre + ";" + NIF + ";"+ departamento + ";" + fecha.convertidorFormato() + ";" + sueldoBase;
+    }
 }

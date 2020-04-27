@@ -5,11 +5,13 @@
  */
 package empresapasopaso;
 
+import java.io.Serializable;
+
 /**
  *
  * @author GEMA
  */
-public class Fecha {
+public class Fecha implements Serializable{
     protected int dia;
     protected int mes;
     protected int anyo;

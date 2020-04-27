@@ -37,10 +37,10 @@ public class Empresa {
         for (int i = 2; i < trabajadores.length; i++) {
 
             if (i < trabajadores.length / 2 + 2) {
-                StringBuilder sb = new StringBuilder("JAVA;PHYTON");
-                trabajadores[i] = new Programador(true, sb, "TESTER", "IT", new Fecha(), Math.random() * 501 + 1000);
+                StringBuilder sb = new StringBuilder("JAVA:PHYTON");
+                trabajadores[i] = new Programador(true, sb, "TESTER", "IT"+i, new Fecha(), Math.random() * 501 + 1000);
             } else {
-                trabajadores[i] = new JefeProyecto(i * 5, "TESTER_JEFE", "dpto", new Fecha(), 10);//Math.random() * 501 + 1500
+                trabajadores[i] = new JefeProyecto(i * 5, "TESTER_JEFE", "dpto", new Fecha(),Math.random() * 501 + 1500 );
             }
         }
     }
@@ -103,7 +103,7 @@ public class Empresa {
                 do {
                     lenguaje = sc.nextLine();
                     if (!lenguaje.equals("**")) {
-                        lenguajes = lenguajes.append(";").append(lenguaje);
+                        lenguajes = lenguajes.append(":").append(lenguaje);
                     }
                 } while (!lenguaje.equals("**"));
 
@@ -242,7 +242,7 @@ public class Empresa {
         while (intercambio) {
             intercambio = false;
             for (int i = 0; i < copia.length - 1; i++) {
-                if (copia[i].sueldoBase < copia[i + 1].sueldoBase) {
+                if ((copia[i].departamento.compareTo(copia[i + 1].departamento))<0 ){
                     aux = copia[i];
                     copia[i] = copia[i + 1];
                     copia[i + 1] = aux;

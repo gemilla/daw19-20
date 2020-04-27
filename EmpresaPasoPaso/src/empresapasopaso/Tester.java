@@ -5,6 +5,7 @@
  */
 package empresapasopaso;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -19,36 +20,29 @@ public class Tester {
     public static void main(String[] args) {
         // TODO code application logic here
         //Faltaría hacer el menú
-        /*StringBuilder asdf=new StringBuilder("Java");   
-       asdf.append(";C##");
-       System.out.println(asdf);
-       String trozos[]= asdf.toString().split(";");
-        System.out.println(trozos.length);
-        
-         */
         Scanner lector= new Scanner(System.in);
+        GestorFicheros.crearFicheros();
         Empresa empresa = new Empresa(5);
-        /*empresa.listarTrabajadores();
-        Trabajador trabajador = Empresa.crearTrabajador();
-        if (trabajador != null) {
-            empresa.insertarEmpresa(trabajador);
-        }
         empresa.listarTrabajadores();
+        GestorFicheros.escribirFicheroPW(GestorFicheros.FICHERO_TRABAJADORES, empresa.trabajadores);
         System.out.println("-------------------------------------");
-        empresa.consultaPorDepartamento("dpto");
-        System.out.println("Dime NIF");
-        empresa.actualizarSalario(lector.nextLine());*/
-        empresa.listarTrabajadores();
+        GestorFicheros.leerFicheroEscaner(GestorFicheros.FICHERO_TRABAJADORES);
+        
+        GestorFicheros.escribirFicheroBinario(GestorFicheros.FICHERO_BINARIO_TRABAJADORES, empresa.trabajadores);
         System.out.println("-------------------------------------");
-       /* if (empresa.actualizarPersonas("TESTER_JEFE", 30))
-            System.out.println("Cambio actualizado con éxito");
-        else
-            System.out.println("No se ha encontrado dicho trabajador");
-         empresa.listarTrabajadores();
-         empresa.calcularSalario("dpto");*/
-       empresa.ordenarCopia();
-       System.out.println("-------------------------------------");
-       empresa.listarTrabajadores();
-    }
+        
+        Trabajador [] grupo=GestorFicheros.leerFicheroBinario(GestorFicheros.FICHERO_BINARIO_TRABAJADORES);
+        System.out.println(Arrays.toString(grupo));
+        System.out.println(grupo.length);
+        
+        
+        GestorFicheros.escribirFicheroBinarioUnoPorUno(GestorFicheros.FICHERO_BINARIO_TRABAJADORES, empresa.trabajadores);
+        System.out.println("-------------------------------------");
+        
+        Trabajador [] grupo2=GestorFicheros.leerFicheroBinarioUnoPorUno(GestorFicheros.FICHERO_BINARIO_TRABAJADORES);
+        System.out.println(Arrays.toString(grupo2));
+        System.out.println(grupo2.length);
+       
+       }
 
 }

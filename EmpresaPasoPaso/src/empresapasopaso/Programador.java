@@ -16,7 +16,7 @@ public class Programador extends Trabajador{
     public Programador() {
         super();
         experienciaPOO = true;
-        lenguajes = new StringBuilder("Java;C##");
+        lenguajes = new StringBuilder("Java:C##");
         sueldoBase= Math.random()*501+1000;
     }
 
@@ -53,7 +53,11 @@ public class Programador extends Trabajador{
     public String toString() {
         return super.toString()+"Experiencia en POO:"+ mostrarExperiencia()+ lenguajes.toString();
     }
-
     
+    
+    @Override
+    public String toStringFichero(){
+        return super.toStringFichero()+";"+experienciaPOO+";"+lenguajes.toString();
+    }
     
 }

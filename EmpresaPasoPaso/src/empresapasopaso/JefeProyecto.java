@@ -44,5 +44,8 @@ public class JefeProyecto extends Trabajador {
     public String toString() {
         return super.toString()+"personas=" + personas + '}';
     }
-    
+    @Override
+    public String toStringFichero(){
+        return super.toStringFichero()+";"+this.personas;
+    }
 }
