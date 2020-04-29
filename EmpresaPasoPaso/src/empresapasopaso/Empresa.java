@@ -20,7 +20,7 @@ public class Empresa {
 
     public Empresa() {
         //this(12);
-        trabajadores = new Trabajador[12];
+       /* trabajadores = new Trabajador[12];
         for (int i = 2; i < trabajadores.length; i++) {
 
             if (i < trabajadores.length / 2 + 2) {
@@ -28,8 +28,8 @@ public class Empresa {
             } else {
                 trabajadores[i] = new JefeProyecto();
             }
-        }
-
+        }*/
+      trabajadores = GestorFicheros.leerFicheroEscaner(GestorFicheros.FICHERO_TRABAJADORES);
     }
 
     public Empresa(int tamanyo) {

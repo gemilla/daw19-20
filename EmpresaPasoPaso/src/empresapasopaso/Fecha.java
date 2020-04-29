@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author GEMA
  */
-public class Fecha implements Serializable{
+public class Fecha implements Serializable {
     protected int dia;
     protected int mes;
     protected int anyo;
@@ -28,6 +28,12 @@ public class Fecha implements Serializable{
         this.anyo = anyo;
     }
 
+    public Fecha(String fecha) {
+        String []trozos= fecha.split("/");
+        this.dia = Integer.parseInt(trozos[0]);
+        this.mes = Integer.parseInt(trozos[1]);
+        this.anyo = Integer.parseInt(trozos[2]);
+    }
     public int getDia() {
         return dia;
     }

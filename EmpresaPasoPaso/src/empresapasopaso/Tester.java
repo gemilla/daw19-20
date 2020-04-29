@@ -20,22 +20,29 @@ public class Tester {
     public static void main(String[] args) {
         // TODO code application logic here
         //Faltaría hacer el menú
-        Scanner lector= new Scanner(System.in);
+        
         GestorFicheros.crearFicheros();
         Empresa empresa = new Empresa(5);
+        //Empresa empresa = new Empresa(); cargue los trabajadores del fichero de texto.
         empresa.listarTrabajadores();
+        /*
         GestorFicheros.escribirFicheroPW(GestorFicheros.FICHERO_TRABAJADORES, empresa.trabajadores);
         System.out.println("-------------------------------------");
-        GestorFicheros.leerFicheroEscaner(GestorFicheros.FICHERO_TRABAJADORES);
+        Trabajador[] lista = GestorFicheros.leerFicheroEscaner(GestorFicheros.FICHERO_TRABAJADORES);
+        System.out.println(Arrays.toString(lista));
+        System.out.println(lista.length);*/
         
-        GestorFicheros.escribirFicheroBinario(GestorFicheros.FICHERO_BINARIO_TRABAJADORES, empresa.trabajadores);
+
+        //después del descanso
+         
+        /*GestorFicheros.escribirFicheroBinario(GestorFicheros.FICHERO_BINARIO_TRABAJADORES, empresa.trabajadores);
         System.out.println("-------------------------------------");
         
         Trabajador [] grupo=GestorFicheros.leerFicheroBinario(GestorFicheros.FICHERO_BINARIO_TRABAJADORES);
         System.out.println(Arrays.toString(grupo));
-        System.out.println(grupo.length);
+        System.out.println(grupo.length);*/
         
-        
+        //Segunda forma
         GestorFicheros.escribirFicheroBinarioUnoPorUno(GestorFicheros.FICHERO_BINARIO_TRABAJADORES, empresa.trabajadores);
         System.out.println("-------------------------------------");
         
