@@ -56,27 +56,7 @@ public class GestorFicheros {
             Logger.getLogger(GestorFicheros.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    //no hace falta
-    public static int lineasFichero(String fichero) {
-        int cont = 0;
-        try {
-            BufferedReader bf = new BufferedReader(new FileReader(new File(fichero)));
-            String cadena;
-            do {
-                cadena = bf.readLine();
-                if (cadena != null) {
-                    cont++;
-                }
-            } while (cadena != null);
-            bf.close();
-        } catch (FileNotFoundException ex) {
-            System.out.println("Fichero no encontrado" + ex.getMessage());
-            Logger.getLogger(GestorFicheros.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(GestorFicheros.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return cont;
-    }
+    
 
     public static ArrayList<Individuo> leerFichero(String fichero) {
         System.out.println("leyedo fichero....");
@@ -119,7 +99,7 @@ public class GestorFicheros {
             censoE = (Censo) os.readObject();
             os.close();
         } catch (ClassNotFoundException e) {
-            System.out.println(e.getMessage() + "Clase Individuo [] no encontrada");
+            System.out.println(e.getMessage() + "Clase Censo no encontrada");
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -141,7 +121,7 @@ public class GestorFicheros {
     }
 
     public static ArrayList<Individuo> leerFicheroBinarioUnoPorUno(String fichero) {
-        ArrayList<Individuo> lista = new ArrayList(); //podéis contar número de líneas?
+        ArrayList<Individuo> lista = new ArrayList();
         boolean EOF = false; //end of file
         int i = 0;
         try {

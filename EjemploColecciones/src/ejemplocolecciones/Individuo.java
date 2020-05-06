@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author GEMA
  */
-public class Individuo implements Serializable,Comparable<Individuo>{
+public class Individuo implements Serializable, Comparable<Individuo>{
     protected int edad;
     protected String nombre;
     protected String poblacion;
@@ -57,7 +57,9 @@ public class Individuo implements Serializable,Comparable<Individuo>{
 
     @Override
     public int compareTo(Individuo t) {
-        return this.nombre.compareToIgnoreCase(t.nombre);
+        return this.nombre.compareTo(t.nombre);
     }
+
+   
     
 }

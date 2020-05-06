@@ -27,11 +27,13 @@ public class Censo implements Serializable {
         //primera ejecución
         censo = new ArrayList();
         for (int i = 0; i < 10; i++) {
+            /*Individuo aux = new Individuo((int) (Math.random() * 100), "individuo" + (i + 1), "provincia" + (i % 3));
+            censo.add(aux);*/
             censo.add(new Individuo((int) (Math.random() * 100), "individuo" + (i + 1), "provincia" + (i % 3)));
         }
 
         //sucesivas, carga de fichero
-        //censo =GestorFicheros.leerFicheroBinario(GestorFicheros.FICHERO_BINARIO);
+        //censo = GestorFicheros.leerFicheroBinario(GestorFicheros.FICHERO_BINARIO).censo;
     }
 
     public ArrayList<Individuo> getCenso() {
@@ -59,7 +61,17 @@ public class Censo implements Serializable {
 
     }
 
-    public void baja(String poblacion) throws IOException {
+    public void baja(String nombre, String poblacion) throws IOException {
+        boolean borrado=false;
+        for (int i = 0; i < censo.size()&&!borrado; i++) {
+            if (censo.get(i).nombre.equalsIgnoreCase(nombre)&& censo.get(i).poblacion.equalsIgnoreCase(poblacion)) {
+                censo.remove(i);
+                borrado=true;
+            }
+
+        }
+    }
+     public void baja(String poblacion) throws IOException {
         for (int i = 0; i < censo.size(); i++) {
             if (censo.get(i).poblacion.equalsIgnoreCase(poblacion)) {
                 censo.remove(i);
@@ -89,7 +101,7 @@ public class Censo implements Serializable {
 
     public void mostrarMayores(int edad) {
         for (int i = 0; i < censo.size(); i++) {
-            if ((censo.get(i) != null) && (censo.get(i).edad > edad)) {
+            if (censo.get(i).edad > edad){
                 System.out.println(censo.get(i));
             }
 
