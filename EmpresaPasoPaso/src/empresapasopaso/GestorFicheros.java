@@ -156,7 +156,10 @@ public class GestorFicheros {
             System.out.println(e.getMessage());
         }
     }
-
+/*public static Programador[] leerFicheroBinarioUnoPorUno(String fichero) {
+Tarea obtener sólo los programadores del fichero
+}*/
+        
     public static Trabajador[] leerFicheroBinarioUnoPorUno(String fichero) {
         Trabajador[] lista = new Trabajador[10]; //podéis contar número de líneas?
         boolean EOF = false; //end of file

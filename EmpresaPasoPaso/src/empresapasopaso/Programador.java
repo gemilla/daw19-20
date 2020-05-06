@@ -12,6 +12,7 @@ package empresapasopaso;
 public class Programador extends Trabajador{
     protected boolean experienciaPOO;
     protected StringBuilder lenguajes;
+    protected boolean experienciaUnity;
 
     public Programador() {
         super();
