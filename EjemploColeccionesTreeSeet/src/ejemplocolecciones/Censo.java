@@ -32,7 +32,7 @@ public class Censo implements Serializable {
         }
 
         //sucesivas, carga de fichero
-        //censo =GestorFicheros.leerFicheroBinario(GestorFicheros.FICHERO_BINARIO);
+        //censo =GestorFicheros.leerFicheroBinario(GestorFicheros.FICHERO_BINARIO).censo;
     }
 
     public TreeSet<Individuo> getCenso() {
