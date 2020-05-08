@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.TreeSet;
 
@@ -27,8 +28,8 @@ public class Censo implements Serializable {
     public Censo() {
         //primera ejecución
         censo = new TreeSet();
-        for (int i = 0; i < 10; i++) {
-            censo.add(new Individuo((int) (Math.random() * 100), "individuo" + (i + 1), "provincia" + (i % 3)));
+        for (int i = 0; i < 30; i++) {
+            censo.add(new Individuo((int) (Math.random() * 100), "individuo" + (i + 1), "provincia" + (i % 5)));
         }
 
         //sucesivas, carga de fichero
@@ -71,6 +72,16 @@ public class Censo implements Serializable {
         }
     }
 
+    public void bajaArrayList(String poblacion) throws IOException {
+        ArrayList<Individuo> lista = new ArrayList(censo);
+        for (int i = 0; i < lista.size(); i++) {
+            if (lista.get(i).poblacion.equalsIgnoreCase(poblacion)) {
+                lista.remove(i);
+                i--;
+            }
+
+        }
+    }
     public void mostrar(String nombre) {
         Iterator<Individuo> it = censo.iterator();
         while (it.hasNext()) {

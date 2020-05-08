@@ -6,12 +6,13 @@
 package ejemplocolecciones;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
  * @author GEMA
  */
-public class Individuo implements Serializable,Comparable<Individuo>{
+public class Individuo implements Serializable, Comparable<Individuo>{
     protected int edad;
     protected String nombre;
     protected String poblacion;
@@ -56,8 +57,26 @@ public class Individuo implements Serializable,Comparable<Individuo>{
     }
 
     @Override
-    public int compareTo(Individuo t) {
-        return this.nombre.compareToIgnoreCase(t.nombre);
+    public int hashCode() {
+        int hash = 5;
+        hash = 17 * hash + this.edad;
+        hash = 17 * hash + Objects.hashCode(this.nombre);
+        hash = 17 * hash + Objects.hashCode(this.poblacion);
+        return hash;
     }
+
+    @Override
+    public boolean equals (Object o){
+        boolean iguales= false;
+        if (this.edad ==((Individuo)o).edad && this.nombre.equals(((Individuo)o).nombre)&& this.poblacion.equals(((Individuo)o).poblacion))
+           iguales=true; 
+        return iguales;
+    }
+
+    @Override
+    public int compareTo(Individuo t) {
+        return this.nombre.compareTo(t.nombre);
+    }
+     
     
 }

@@ -8,6 +8,8 @@ package ejemplocolecciones;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -60,6 +62,9 @@ public class EjemploColecciones {
                 switch (opcion) {
                     case 1:
                         censoEspaña.listar();
+                        ArrayList<Individuo> lista = new ArrayList(censoEspaña.censo);
+                        Collections.sort(lista,new porEdad());
+                        System.out.println(lista);
                         break;
 
                     case 2:

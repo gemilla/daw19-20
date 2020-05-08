@@ -58,28 +58,7 @@ public class GestorFicheros {
             Logger.getLogger(GestorFicheros.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    //no hace falta
-    public static int lineasFichero(String fichero) {
-        int cont = 0;
-        try {
-            BufferedReader bf = new BufferedReader(new FileReader(new File(fichero)));
-            String cadena;
-            do {
-                cadena = bf.readLine();
-                if (cadena != null) {
-                    cont++;
-                }
-            } while (cadena != null);
-            bf.close();
-        } catch (FileNotFoundException ex) {
-            System.out.println("Fichero no encontrado" + ex.getMessage());
-            Logger.getLogger(GestorFicheros.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(GestorFicheros.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return cont;
-    }
-
+    
     public static TreeSet<Individuo> leerFichero(String fichero) {
         System.out.println("leyedo fichero....");
         TreeSet<Individuo> lista = new TreeSet();
