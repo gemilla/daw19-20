@@ -6,6 +6,7 @@
 package ejemplocolecciones;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
@@ -46,6 +47,26 @@ public class Individuo implements Serializable, Comparable<Individuo>{
         this.poblacion = poblacion;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + this.edad;
+        hash = 67 * hash + Objects.hashCode(this.nombre);
+        hash = 67 * hash + Objects.hashCode(this.poblacion);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        
+       boolean iguales = false;
+       if (this.edad==((Individuo)obj).edad && this.nombre.equals(((Individuo)obj).nombre)&& this.poblacion.equals(((Individuo)obj).poblacion))
+            iguales = true;
+        
+        return iguales;
+        
+    }
+  
     @Override
     public String toString() {
         return String.format("%15s %4d %15s\n",nombre, edad, poblacion);
