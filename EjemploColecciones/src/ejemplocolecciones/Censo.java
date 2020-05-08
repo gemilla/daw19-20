@@ -51,7 +51,9 @@ public class Censo implements Serializable {
     }
 
     public void alta() throws IOException {
-        censo.add(Alta());
+       /* Individuo aux = Alta();
+        if (!censo.contains(aux))*/
+            censo.add(Alta());
     }
 
     public static Individuo Alta() throws IOException {
